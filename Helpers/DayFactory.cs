@@ -1,10 +1,11 @@
-﻿using System;
+﻿using adventofcode.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace adventofcode
+namespace adventofcode.Helpers
 {
     internal class DayFactory
     {
@@ -20,10 +21,8 @@ namespace adventofcode
             try
             {
                 if (!IsComplete(dayNumber)) throw new ArgumentException("Invalid day number.");
-                string className = $"adventofcode.Day{dayNumber}";
+                string className = $"adventofcode.Days.Day{dayNumber}";
                 Type type = Type.GetType(className);
-
-                Console.WriteLine(className);
 
                 if (type == null)
                 {

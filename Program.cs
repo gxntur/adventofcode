@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using adventofcode;
+using adventofcode.Helpers;
+using adventofcode.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 
@@ -15,4 +16,4 @@ IDay day = dayFactory.CreateDay(dayInput);
 
 if (day == null) return;
 
-Console.WriteLine($"Day {dayInput} part {partInput} solution: {(partInput == 1 ? day.SolvePart1() : day.SolvePart2())}");
+Console.WriteLine($"Day {dayInput} Part {partInput} Solution = {(partInput == 1 ? day.SolvePart1() : day.SolvePart2())}");

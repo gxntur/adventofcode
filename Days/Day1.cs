@@ -1,10 +1,11 @@
-﻿using System;
+﻿using adventofcode.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace adventofcode
+namespace adventofcode.Days
 {
     internal class Day1 : IDay
     {
@@ -15,7 +16,7 @@ namespace adventofcode
             var distance = 0;
             var lineNumber = 0;
 
-            var text = File.ReadLines("input1.txt");
+            var text = File.ReadLines($"Inputs/input1.txt");
 
             foreach (var line in text)
             {
@@ -49,7 +50,7 @@ namespace adventofcode
 
         public int SolvePart2()
         {
-            var text = File.ReadLines("input1.txt");
+            var text = File.ReadLines("Inputs/input1.txt");
 
             return 1;
         }
