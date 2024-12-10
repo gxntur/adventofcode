@@ -1,5 +1,6 @@
 ﻿using adventofcode.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,8 +52,35 @@ namespace adventofcode.Days
         public int SolvePart2()
         {
             var text = File.ReadLines("Inputs/input1.txt");
+            var occurrences = new Dictionary<int, int>();
+            int runningTotal = 0;
+            var list1 = new List<int>();
 
-            return 1;
+            foreach (var line in text)
+            {
+                var lineParts = line.Split("   ");
+                var linePart1 = int.Parse(lineParts[0]);
+                var linePart2 = int.Parse(lineParts[1]);
+
+                list1.Add(linePart1);
+
+                if(!occurrences.TryAdd(linePart2, 1))
+                {
+                    Console.WriteLine("didnt add new");
+                    occurrences[linePart2] = occurrences[linePart2] + 1;
+                    Console.WriteLine(occurrences[linePart2]);
+                }
+            }
+
+            foreach (var item in list1)
+            {
+                if (occurrences.ContainsKey(item))
+                {
+                    runningTotal += (item * occurrences[item]);
+                }
+            }
+
+            return runningTotal;
         }
     }
 }
