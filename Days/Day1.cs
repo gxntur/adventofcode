@@ -10,6 +10,12 @@ namespace adventofcode.Days
 {
     internal class Day1 : IDay
     {
+        private readonly IEnumerable<string> _inputString;
+
+        public Day1() { 
+            _inputString = File.ReadLines($"Inputs/input1.txt");
+        }
+
         public int SolvePart1()
         {
             var sortedList1 = new List<int>();
@@ -17,9 +23,7 @@ namespace adventofcode.Days
             var distance = 0;
             var lineNumber = 0;
 
-            var text = File.ReadLines($"Inputs/input1.txt");
-
-            foreach (var line in text)
+            foreach (var line in _inputString)
             {
                 var lineParts = line.Split("   ");
                 Console.WriteLine($"Current Line Number {lineNumber} and inputs {lineParts[0]} {lineParts[1]}");
@@ -51,12 +55,11 @@ namespace adventofcode.Days
 
         public int SolvePart2()
         {
-            var text = File.ReadLines("Inputs/input1.txt");
             var occurrences = new Dictionary<int, int>();
             int runningTotal = 0;
             var list1 = new List<int>();
 
-            foreach (var line in text)
+            foreach (var line in _inputString)
             {
                 var lineParts = line.Split("   ");
                 var linePart1 = int.Parse(lineParts[0]);

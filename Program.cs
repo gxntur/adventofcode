@@ -7,6 +7,9 @@ using System.Numerics;
 DayFactory dayFactory = new();
 
 try {
+    // for debugging
+    dayFactory.CreateDay(2).SolvePart1();
+
     Console.WriteLine("Enter day: ");
     int dayInput = int.Parse(Console.ReadLine());
 
