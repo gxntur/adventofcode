@@ -4,9 +4,10 @@ using adventofcode.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 
-DayFactory dayFactory = new();
-
 try {
+    DayFactory dayFactory = new();
+
+    Console.WriteLine(Directory.GetCurrentDirectory());
     // for debugging
     dayFactory.CreateDay(2).SolvePart1();
 

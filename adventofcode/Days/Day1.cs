@@ -12,7 +12,7 @@ namespace adventofcode.Days
     {
         private readonly IEnumerable<string> _inputString;
 
-        public Day1() { 
+        public Day1() {
             _inputString = File.ReadLines($"Inputs/input1.txt");
         }
 

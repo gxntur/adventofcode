@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace adventofcode.Helpers
 {
-    internal class DayFactory
+    public class DayFactory
     {
         public List<int> CompletedDays = new()
         {

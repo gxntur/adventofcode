@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace adventofcode.Interfaces
 {
-    internal interface IDay
+    public interface IDay
     {
         int SolvePart1();
 
