@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace adventofcode.Days
 {
-    internal class Day2 : IDay
+    internal class Day02 : IDay
     {
         private readonly IEnumerable<string> _inputString;
 
-        public Day2() {
-            _inputString = File.ReadLines($"Inputs/input2.txt");
+        public Day02() {
+            _inputString = File.ReadLines($"Inputs/input02.txt");
         }
 
         public int SolvePart1()

@@ -22,7 +22,12 @@ namespace adventofcode.Helpers
             try
             {
                 if (!IsComplete(dayNumber)) throw new ArgumentException("Invalid day number.");
-                string className = $"adventofcode.Days.Day{dayNumber}";
+
+                string dayName = dayNumber.ToString();
+
+                if (dayName.Length == 1) dayName = '0' + dayName; 
+
+                string className = $"adventofcode.Days.Day{dayName}";
                 Type type = Type.GetType(className);
 
                 if (type == null)

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace adventofcode.Days
 {
-    internal class Day1 : IDay
+    internal class Day01 : IDay
     {
         private readonly IEnumerable<string> _inputString;
 
-        public Day1() {
-            _inputString = File.ReadLines($"Inputs/input1.txt");
+        public Day01() {
+            _inputString = File.ReadLines($"Inputs/input01.txt");
         }
 
         public int SolvePart1()

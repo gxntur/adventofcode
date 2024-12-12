@@ -3,7 +3,7 @@ using adventofcode.Interfaces;
 
 namespace AdventOfCode.Tests
 {
-    public class Day2UnitTests
+    public class Day02UnitTests
     {
         private IDay _day2 = new DayFactory().CreateDay(2);
 
