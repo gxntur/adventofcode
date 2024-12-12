@@ -12,8 +12,7 @@ namespace AdventOfCode.Tests
         {
             var answer = _day2.SolvePart1();
 
-            Console.WriteLine(answer);
-            Assert.Equal(0, answer);
+            Assert.Equal(585, answer);
         }
 
         [Fact]
@@ -21,8 +20,7 @@ namespace AdventOfCode.Tests
         {
             var answer = _day2.SolvePart2();
 
-            Console.WriteLine(answer);
-            Assert.Equal(26407426, answer);
+            Assert.Equal(626, answer);
         }
     }
 }

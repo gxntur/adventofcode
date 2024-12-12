@@ -12,7 +12,7 @@ namespace adventofcode.Days
         private readonly IEnumerable<string> _inputString;
 
         public Day2() {
-            _inputString = File.ReadLines($"Inputs/test.txt");
+            _inputString = File.ReadLines($"Inputs/input2.txt");
         }
 
         public int SolvePart1()
@@ -20,13 +20,9 @@ namespace adventofcode.Days
             int totalSafeReports = 0;
             foreach (string line in _inputString)
             {
-                if (isLineSafe(line)) { 
+                if (IsLineSafe(line)) { 
                     totalSafeReports++;
-                    Console.WriteLine("safe");
-                } else { 
-                    Console.WriteLine("unsafe"); 
                 }
-
             }
 
             return totalSafeReports;
@@ -34,31 +30,69 @@ namespace adventofcode.Days
 
         public int SolvePart2()
         {
-            throw new NotImplementedException();
+            int totalSafeReports = 0;
+            foreach (string line in _inputString)
+            {
+                if (IsDampenedLineSafe(line))
+                {
+                    totalSafeReports++;
+                }
+            }
+
+            return totalSafeReports;
         }
 
-        private bool isLineSafe(string line)
+        private static bool IsLineSafe(string line)
         {
             string[] numbersAsStrings = line.Split(" ");
             var pointer = 0;
             bool isSafe = true;
             bool isSeriesAscending = int.Parse(numbersAsStrings[0]) - int.Parse(numbersAsStrings[1]) < 0;
 
-            while (isSafe && pointer < numbersAsStrings.Length - 2)
+            while (isSafe && pointer < numbersAsStrings.Length - 1)
             {
                 var currentInt = int.Parse(numbersAsStrings[pointer]);
                 var nextInt = int.Parse(numbersAsStrings[pointer + 1]);
-                var difference = Math.Abs(nextInt - currentInt);
+                var difference = nextInt - currentInt;
+                var absoluteDifference = Math.Abs(nextInt - currentInt);
 
-                if (isSeriesAscending && (nextInt - currentInt) < 0) isSafe = false;
+                if ((isSeriesAscending && difference < 0) 
+                    || (!isSeriesAscending && difference > 0)
+                    || (difference == 0)
+                    || (absoluteDifference < 1 || absoluteDifference > 3)) isSafe = false;
 
-                if (!isSeriesAscending && (nextInt - currentInt) > 0) isSafe = false;
+                pointer++;
+            }
 
-                if (nextInt - currentInt == 0) isSafe = false;
+            return isSafe;
+        }
 
-                if (difference < 1 || difference > 3)
-                {
-                    isSafe = false;
+        private static bool IsDampenedLineSafe(string line)
+        {
+            string[] numbersAsStrings = line.Split(" ");
+            var pointer = 0;
+            bool isSafe = true;
+            bool isSeriesAscending = int.Parse(numbersAsStrings[0]) - int.Parse(numbersAsStrings[1]) < 0;
+            bool dampened = false;
+
+            while (isSafe && pointer < numbersAsStrings.Length - 1)
+            {
+                var currentInt = int.Parse(numbersAsStrings[pointer]);
+                var nextInt = int.Parse(numbersAsStrings[pointer + 1]);
+                var difference = nextInt - currentInt;
+                var absoluteDifference = Math.Abs(nextInt - currentInt);
+
+                if ((isSeriesAscending && difference < 0)
+                    || (!isSeriesAscending && difference > 0)
+                    || (difference == 0)
+                    || (absoluteDifference < 1 || absoluteDifference > 3)) { 
+                    if (dampened)
+                    {
+                        isSafe = false;
+                    } else
+                    {
+                        dampened = true;
+                    }
                 }
 
                 pointer++;
