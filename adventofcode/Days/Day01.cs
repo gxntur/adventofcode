@@ -42,12 +42,9 @@ namespace adventofcode.Days
                 lineNumber++;
             }
 
-            var currentDistance = 0;
-
             for (var i = 0; i < sortedList1.Count; i++)
             {
-                currentDistance = Math.Abs(sortedList1[i] - sortedList2[i]);
-                distance += currentDistance;
+                distance += Math.Abs(sortedList1[i] - sortedList2[i]);
             }
 
             return distance;

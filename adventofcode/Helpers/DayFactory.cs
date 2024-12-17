@@ -12,7 +12,8 @@ namespace adventofcode.Helpers
         public List<int> CompletedDays = new()
         {
             1,
-            2
+            2,
+            3
         };
 
         public DayFactory() { }
