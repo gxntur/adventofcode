@@ -43,7 +43,15 @@ namespace adventofcode.Days
 
         public int SolvePart2()
         {
-            throw new NotImplementedException();
+            var total = 0;
+
+            foreach (var line in _inputString)
+            {
+
+                MatchCollection instructions = SplitIntoInstructionsAndModifiers(line);
+            }
+
+            return total;
         }
 
         private MatchCollection SplitIntoInstructions(string input)
@@ -52,6 +60,36 @@ namespace adventofcode.Days
             MatchCollection instructions = regex.Matches(input);
 
             return instructions;
+        }
+
+        private MatchCollection SplitIntoInstructionsAndModifiers(string input)
+        {
+            Regex instructionRegex = new Regex(@"mul\(\d+,\d+\)");
+            Regex modifierRegex = new Regex(@"do(n't)?\(\)");
+            MatchCollection instructions = instructionRegex.Matches(input);
+            MatchCollection modifiers = modifierRegex.Matches(input);
+
+            var allMatches = new List<(Match match, string pattern)>();
+            foreach (Match match in Regex.Matches(input, @"mul\(\d+,\d+\)"))
+            {
+                allMatches.Add((match, "instruction"));
+            }
+            foreach (Match match in Regex.Matches(input, @"do(n't)?\(\)"))
+            {
+                allMatches.Add((match, "modifier"));
+            }
+
+
+            // Sort matches by their position in the string, keeping duplicates
+            allMatches.Sort((a, b) => a.match.Index.CompareTo(b.match.Index));
+
+            // Display matches
+            foreach (var (match, pattern) in allMatches)
+            {
+                Console.WriteLine($"Matched: '{match.Value}' at position {match.Index} (from {pattern})");
+            }
+
+            return null;
         }
     }
 }
